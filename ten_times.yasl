@@ -1,0 +1,11 @@
+!! // drop args
+
+10      // count start
+%@ (
+    "hello world\n"
+    print
+    (   // --decr
+        0:(1 -):0
+    )
+)
+

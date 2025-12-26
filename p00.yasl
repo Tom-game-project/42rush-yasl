@@ -38,4 +38,5 @@ print
 
 // stack2.add
 2:+:2
-2:print
+2:
+print
