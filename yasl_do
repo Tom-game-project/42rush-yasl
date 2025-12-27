@@ -1,41 +1,99 @@
 !!
 
-"+"
-%== 
-? // 1 or 0
-(   // then 
-    "plus"
-    print
-) : // else if
-(
-    !   // drop bool data
-    "-"
-    %==
-    ? (
-        "minus"
-        print
-    ) : // else
-    ( 
-        !   // drop bool data
-        "*"
-        %==
-        ? (
-            "mul"
-            print
-        ) : // else
-        ( 
-            !   // drop bool data
-            "/"
-            %==
-            ? (
-                "div"
-                print
-            ) : // else
-            ( 
-                "otherwise"
-                print
-            )
-        )
-    )
-)
+// stack2.push const (arg1)
+      // arg1
+0:=:2 // stack0 to stack2
+!     // drop stack0
 
+// stack1.push const (arg2)
+      // arg2
+0:=:1 // stack0 to stack1
+!     // drop stack0
+
+// stack2.push const (arg3)
+      // arg3
+0:=:2 // stack0 to stack2
+!     // drop stack0
+
+// stack0 <- stack2.pop (arg1)
+// stack0 <- stack2.pop (arg3)
+
+2:(=!):0
+0:eval     
+2:(=!):0
+0:eval
+2^
+1:(=!):0
+0:eval
+0:print
+
+//// stack0 <- stack2.pop (arg2)
+//1:(= !):0
+//"+"
+//%== 
+//? // 1 or 0
+//(   // then
+//    // stack0 <- stack2.pop (arg1)
+//    // stack0 <- stack2.pop (arg3)
+//
+//    2:(=!):0
+//    0:eval     
+//    2:(=!):0
+//    0:eval
+//    0:+:0
+//    0:print
+//) : // else if
+//(
+//    !   // drop bool data
+//    "-"
+//    %==
+//    ? (
+//        // stack0 <- stack2.pop (arg1)
+//        // stack0 <- stack2.pop (arg3)
+//
+//        2:(=!):0
+//        0:eval     
+//        2:(=!):0
+//        0:eval
+//        0:-:0
+//        0:print
+//    ) : // else
+//    ( 
+//        !   // drop bool data
+//        "*"
+//        %==
+//        ? (
+//
+//// stack0 <- stack2.pop (arg1)
+//// stack0 <- stack2.pop (arg3)
+//
+//2:(=!):0
+//0:eval     
+//2:(=!):0
+//0:eval
+//            0:*:0
+//            0:print
+//        ) : // else
+//        ( 
+//            !   // drop bool data
+//            "/"
+//            %==
+//            ? (
+//// stack0 <- stack2.pop (arg1)
+//// stack0 <- stack2.pop (arg3)
+//
+//2:(=!):0
+//0:eval     
+//2:(=!):0
+//0:eval
+//                0:/:0
+//                0:print
+//            ) : // else
+//            ( 
+//                "otherwise"
+//                0:print
+//            )
+//        )
+//    )
+//)
+//
