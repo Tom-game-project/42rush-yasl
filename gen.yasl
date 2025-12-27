@@ -1,0 +1,26 @@
+!! 
+"+"
+%== 
+? // 1 or 0
+(   // then 
+"plus"
+print
+) : // else if
+(
+    !   // drop bool data
+
+"-"
+%== 
+? // 1 or 0
+(   // then 
+"minus"
+print
+) : // else if
+(
+    !   // drop bool data
+"otherwise"
+print
+)
+    
+)
+    

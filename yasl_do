@@ -1,0 +1,41 @@
+!!
+
+"+"
+%== 
+? // 1 or 0
+(   // then 
+    "plus"
+    print
+) : // else if
+(
+    !   // drop bool data
+    "-"
+    %==
+    ? (
+        "minus"
+        print
+    ) : // else
+    ( 
+        !   // drop bool data
+        "*"
+        %==
+        ? (
+            "mul"
+            print
+        ) : // else
+        ( 
+            !   // drop bool data
+            "/"
+            %==
+            ? (
+                "div"
+                print
+            ) : // else
+            ( 
+                "otherwise"
+                print
+            )
+        )
+    )
+)
+
