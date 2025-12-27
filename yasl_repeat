@@ -1,0 +1,21 @@
+!!
+
+20
+10      // count start
+%@ (
+    0:(=):0   // dup the first argument on stack.
+    0:(=!):0  // consume the first argument on stack.
+    print
+    ":stack size "
+    print
+    #
+    print
+    ":"
+    print
+    "hello world\n"
+    print
+    (   // --decr
+        0:(1 -):0
+    )
+)
+
