@@ -18,8 +18,32 @@ print
 ) : // else if
 (
     !   // drop bool data
+
+"*"
+%== 
+? // 1 or 0
+(   // then 
+"mul"
+print
+) : // else if
+(
+    !   // drop bool data
+
+"/"
+%== 
+? // 1 or 0
+(   // then 
+"div"
+print
+) : // else if
+(
+    !   // drop bool data
 "otherwise"
 print
+)
+    
+)
+    
 )
     
 )

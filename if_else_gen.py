@@ -15,22 +15,36 @@ def match_gen(match_case: str, code1:str, code2:str) -> str:
 
 def main():
     print(
-    "!!",
-    match_gen(
-            "+",
+        "!!",
+        match_gen(
+                "+",
 
-            "\"plus\"\n"
-            "print",
-    match_gen(
-            "-",
+                "\"plus\"\n"
+                "print",
+        match_gen(
+                "-",
 
-            "\"minus\"\n"
-            "print",
+                "\"minus\"\n"
+                "print",
 
-            "\"otherwise\""
-            "\nprint",
-    )
-    )
+        match_gen(
+                "*",
+
+                "\"mul\"\n"
+                "print",
+
+        match_gen(
+                "/",
+
+                "\"div\"\n"
+                "print",
+
+                "\"otherwise\""
+                "\nprint",
+        )
+        )
+        )
+        )
     )
 
 main()
