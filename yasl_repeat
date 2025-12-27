@@ -1,19 +1,54 @@
 !!
 
-20
-10      // count start
+{
+    0:(=):0   // dup the first argument on stack0.
+    0:(=!):0  // consume the first argument on stack0.
+    1:#       // ref stack1
+    2^
+    -         // count up 0..10
+} get_loop_index
+
+// move argvs into stack1
+0:#
+@(
+    0:=:1 // stack0 to stack1
+    0:=:2 // stack0 to stack2
+    0:!     // drop stack0
+    0:#
+)
+
+// show debug info
+
+"print stack0:"
+print
+0:#
+0:print
+"\n"
+print
+
+"print stack1:"
+print
+1:#
+print
+"\n"
+print
+
+1:#      // count start
 %@ (
-    0:(=):0   // dup the first argument on stack.
-    0:(=!):0  // consume the first argument on stack.
+    get_loop_index
+    print
+    // --------------------------
+
+    2:(= !):0
     print
     ":stack size "
     print
-    #
+    1:#
     print
-    ":"
+    "\n"
     print
-    "hello world\n"
-    print
+
+    // --------------------------
     (   // --decr
         0:(1 -):0
     )
