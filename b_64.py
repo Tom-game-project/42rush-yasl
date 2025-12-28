@@ -12,6 +12,7 @@ def base64_decode(encoded: str) -> bytes:
     decoded = bytearray()
 
     # 4文字ずつ処理
+    # base64でencodeされた文字列は必ず4倍長になる
     for i in range(0, len(encoded), 4):
         block = encoded[i:i+4]
         padding = block.count("=")
@@ -20,12 +21,16 @@ def base64_decode(encoded: str) -> bytes:
         block = block.rstrip("=") + "A" * padding
 
         twenty_four_bits = 0
-        for c in block:
-            twenty_four_bits = (twenty_four_bits << 6) | BASE64_INDEX[c]
+
+        twenty_four_bits = (twenty_four_bits << 6) | BASE64_INDEX[block[0]]
+        twenty_four_bits = (twenty_four_bits << 6) | BASE64_INDEX[block[1]]
+        twenty_four_bits = (twenty_four_bits << 6) | BASE64_INDEX[block[2]]
+        twenty_four_bits = (twenty_four_bits << 6) | BASE64_INDEX[block[3]]
 
         # 24bit → 3バイト
-        for shift in (16, 8, 0):
-            decoded.append((twenty_four_bits >> shift) & 0xFF)
+        decoded.append((twenty_four_bits >> 16) & 0xFF)
+        decoded.append((twenty_four_bits >> 8) & 0xFF)
+        decoded.append((twenty_four_bits >> 0) & 0xFF)
 
         # パディング分のバイトを削除
         if padding:

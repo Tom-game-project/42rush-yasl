@@ -51,15 +51,11 @@
         3:=:0
         ==
         ? (
-            "found "
-            print
-            3:=:0
-            print
-            " at "
-            print
             get_loop_index
-            print
+            0:(=!):3         // 返り値をstack3に格納する
+            0
         ):(
+            // pass
         )
         (   // --decr
             0:(1 -):0
@@ -68,7 +64,6 @@
 } get_alphabet_index
 
 // ^^^^^^^^^^^^^^^^ get_alphabet_index ^^^^^^^^^^^^^^^^^^^
-
 
 read       // push length of string to stack
 print 
@@ -80,4 +75,5 @@ print
 
 "c"
 get_alphabet_index
-
+3:(=!):0           // get return value
+print
