@@ -1,0 +1,83 @@
+!!
+
+// ================ init stack2 ===================
+
+"/" "+" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"    
+"z" "y" "x" "w" "v" "u" "t" "s" "r" "q" "p" "o" "n" "m" "l" "k" "j" "i" "h" "g" "f" "e" "d" "c" "b" "a"
+"Z" "Y" "X" "W" "V" "U" "T" "S" "R" "Q" "P" "O" "N" "M" "L" "K" "J" "I" "H" "G" "F" "E" "D" "C" "B" "A"
+0:#
+@(
+    0:=:2 // stack0 to stack2
+    0:!     // drop stack0
+    0:#
+)
+(
+    64
+    0:(=!):2
+    2:([]):2  // set list (A,B,C..,8,9,+,/) on stack2
+)
+
+// ^^^^^^^^^^^^^^^^ init stack2 ^^^^^^^^^^^^^^^^^^^
+
+// ================ get_loop_index ===================
+{
+    0:(=):0   // dup the first argument on stack0.
+    0:(=!):0  // consume the first argument on stack0.
+    1:#       // ref stack1
+    2^
+    -         // count up 0..10
+    64
+    +
+} get_loop_index
+
+// ^^^^^^^^^^^^^^^^ get_loop_index ^^^^^^^^^^^^^^^^^^^
+
+// ================ get_alphabet_index ===================
+{
+    0:(=!):3     // args alphabet temp space
+    // TODO: BASE64_INDEXを返す関数
+    // - using stack2
+    // - using stack3
+    // args position at stack0
+    // 
+    64 // length of alphabet list
+    %@ (
+        get_loop_index  // return loop counter
+        0:(=!):2
+        2:(
+            %]#[  // prevent to drop
+            !     // pop index
+        ):0
+        3:=:0
+        ==
+        ? (
+            "found "
+            print
+            3:=:0
+            print
+            " at "
+            print
+            get_loop_index
+            print
+        ):(
+        )
+        (   // --decr
+            0:(1 -):0
+        )
+    )
+} get_alphabet_index
+
+// ^^^^^^^^^^^^^^^^ get_alphabet_index ^^^^^^^^^^^^^^^^^^^
+
+
+read       // push length of string to stack
+print 
+
+"\n---\n"
+print
+
+0:print    // input stacked in stack0
+
+"c"
+get_alphabet_index
+

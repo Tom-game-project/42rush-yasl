@@ -8,7 +8,7 @@
     -         // count up 0..10
 } get_loop_index
 
-// move argvs into stack1
+// move argvs into stack1 and stack2
 0:#
 @(
     0:=:1 // stack0 to stack1
